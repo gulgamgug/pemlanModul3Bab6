@@ -9,14 +9,19 @@ public class MahasiswaFILKOM extends Manusia {
         this.ipk = ipk;
     }
 
-    public double getBeasiswa() {
+    public double getBeasiswa()     {
         if (this.ipk >= 3.0 && this.ipk < 3.5) {
             return 50;
-        } else if (this.ipk >= 3.5 && this.ipk <=4) {
+        } else if (this.ipk >= 3.5 && this.ipk <= 4) {
             return 75;
         } else {
             return 0;
         }
+    }
+
+    @Override
+    public double getPendapatan() {
+        return super.getPendapatan() + getBeasiswa();
     }
 
     @Override
@@ -26,7 +31,6 @@ public class MahasiswaFILKOM extends Manusia {
                "IPK: " + this.getIpk() + "\n" +
                "Status: " + this.getStatus();
     }
-
 
     public String getStatus() {
         String nim = this.getNim();

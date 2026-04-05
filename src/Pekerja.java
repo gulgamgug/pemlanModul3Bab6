@@ -38,6 +38,10 @@ public class Pekerja extends Manusia {
         this.jumlahAnak = jumlahAnak;
     }
 
+    @Override
+    public double getTunjangan() {
+        return super.getTunjangan() + (this.jumlahAnak * 20);
+    }
 
     public double getBonus() {
         LocalDate today = LocalDate.now();
@@ -57,8 +61,7 @@ public class Pekerja extends Manusia {
 
     @Override
     public double getPendapatan() { 
-        double tunjanganAnak = this.jumlahAnak * 20;
-        return super.getPendapatan() + this.gaji + tunjanganAnak + getBonus();
+        return getTunjangan() + this.gaji + getBonus();
     }
 
     @Override
@@ -66,8 +69,6 @@ public class Pekerja extends Manusia {
         return super.toString() + "\n" +
                "Tahun Masuk: " + this.tahunMasuk + "\n" +
                "Jumlah Anak: " + this.jumlahAnak + "\n" +
-               "Gaji Pokok: " + this.gaji + "\n" +
-               "Bonus: " + this.getBonus() + "\n" +
-               "Total Pendapatan (termasuk tunjangan anak dan bonus): " + this.getPendapatan();
+               "Gaji Pokok: " + this.gaji;
     }
 }
